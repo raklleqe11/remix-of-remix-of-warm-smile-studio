@@ -156,23 +156,36 @@ function HomePage() {
         </div>
       </header>
 
-      {/* ===== Trust Strip ===== */}
+      {/* ===== Trust Strip (Marquee) ===== */}
       <section aria-label="Why patients choose us" className="px-5 -mt-2 mb-10 lg:mb-16">
         <div className="max-w-6xl mx-auto">
-          <div className="rounded-3xl bg-white/65 backdrop-blur-md border border-walnut/5 shadow-sm shadow-walnut/5 px-4 py-4 lg:px-6 lg:py-5">
-            <ul className="flex gap-3 overflow-x-auto lg:overflow-visible lg:flex-wrap lg:justify-between snap-x snap-mandatory scroll-pl-4 no-scrollbar">
+          <div className="rounded-3xl bg-white/65 backdrop-blur-md border border-walnut/5 shadow-sm shadow-walnut/5 px-4 py-4 lg:px-6 lg:py-5 overflow-hidden">
+            <div className="animate-marquee">
+              {/* first set */}
               {trustItems.map(({ icon: Icon, label }) => (
-                <li
-                  key={label}
-                  className="snap-start shrink-0 inline-flex items-center gap-2.5 h-14 px-5 rounded-full bg-ivory/80 border border-walnut/10 text-walnut transition hover:-translate-y-0.5 hover:border-amber-warm/60 hover:shadow-md hover:shadow-amber-warm/10"
+                <div
+                  key={`a-${label}`}
+                  className="shrink-0 inline-flex items-center gap-2.5 h-14 px-5 mx-1.5 rounded-full bg-ivory/80 border border-walnut/10 text-walnut transition hover:-translate-y-0.5 hover:border-amber-warm/60 hover:shadow-md hover:shadow-amber-warm/10"
                 >
                   <Icon className="h-4 w-4 text-amber-warm" strokeWidth={1.6} />
                   <span className="text-[12px] font-medium tracking-wide whitespace-nowrap">
                     {label}
                   </span>
-                </li>
+                </div>
               ))}
-            </ul>
+              {/* duplicate set for seamless loop */}
+              {trustItems.map(({ icon: Icon, label }) => (
+                <div
+                  key={`b-${label}`}
+                  className="shrink-0 inline-flex items-center gap-2.5 h-14 px-5 mx-1.5 rounded-full bg-ivory/80 border border-walnut/10 text-walnut transition hover:-translate-y-0.5 hover:border-amber-warm/60 hover:shadow-md hover:amber-warm/10"
+                >
+                  <Icon className="h-4 w-4 text-amber-warm" strokeWidth={1.6} />
+                  <span className="text-[12px] font-medium tracking-wide whitespace-nowrap">
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
