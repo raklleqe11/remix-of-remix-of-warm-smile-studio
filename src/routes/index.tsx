@@ -1,4 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
+import {
+  Star,
+  Sparkles,
+  Globe2,
+  MapPin,
+  CalendarHeart,
+  ArrowUpRight,
+  Phone,
+  MessageCircle,
+  Clock,
+} from "lucide-react";
 import logoAsset from "@/assets/trimax_dent_logo.webp.asset.json";
 import clinic2 from "@/assets/clinic-2.jpg";
 import clinic3 from "@/assets/clinic-3.jpg";
@@ -35,13 +46,46 @@ export const Route = createFileRoute("/")({
 });
 
 const services = [
-  { title: "Smile Design", img: svcSmile.url, blurb: "Custom-crafted aesthetics" },
-  { title: "Veneers & Whitening", img: svcVeneers.url, blurb: "Bright, natural results" },
-  { title: "Implants", img: svcImplant.url, blurb: "Permanent solutions" },
-  { title: "Orthodontics", img: svcOrtho.url, blurb: "Clear aligners & braces" },
-  { title: "Restorative", img: svcRestorative.url, blurb: "Crowns & bridges" },
-  { title: "Family Care", img: svcFamily.url, blurb: "Gentle for all ages" },
-  { title: "Emergency", img: svcEmergency.url, blurb: "Same-day relief" },
+  {
+    title: "Smile Design",
+    img: svcSmile.url,
+    blurb: "Bespoke smile architecture, planned digitally and crafted by hand for a result that feels unmistakably yours.",
+    featured: true,
+  },
+  {
+    title: "Veneers & Whitening",
+    img: svcVeneers.url,
+    blurb: "Bright, natural-looking results — whitening, veneers and confidence-focused aesthetic care.",
+  },
+  {
+    title: "Implants",
+    img: svcImplant.url,
+    blurb: "Permanent, biocompatible solutions for missing teeth, planned with 3D imaging.",
+  },
+  {
+    title: "Orthodontics",
+    img: svcOrtho.url,
+    blurb: "Clear aligners and modern braces, calibrated to your bite.",
+    featured: true,
+  },
+  {
+    title: "Restorative",
+    img: svcRestorative.url,
+    blurb: "Crowns, bridges and full-mouth rehabilitation done with precision.",
+  },
+  {
+    title: "Family Care",
+    img: svcFamily.url,
+    blurb: "Gentle, preventive dentistry for every age in your family.",
+  },
+];
+
+const trustItems = [
+  { icon: Star, label: "5.0 Reviews" },
+  { icon: CalendarHeart, label: "10+ Years" },
+  { icon: Globe2, label: "Multilingual" },
+  { icon: MapPin, label: "Central Saranda" },
+  { icon: Sparkles, label: "Aesthetic Dentistry" },
 ];
 
 function HomePage() {
@@ -69,7 +113,7 @@ function HomePage() {
       </nav>
 
       {/* ===== Hero ===== */}
-      <header className="px-5 pt-12 pb-16 lg:pt-20 lg:pb-24 max-w-6xl mx-auto">
+      <header className="px-5 pt-12 pb-10 lg:pt-20 lg:pb-16 max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 lg:gap-16 items-center">
           <div className="text-center lg:text-left max-w-xl mx-auto lg:mx-0">
             <span className="inline-block px-3 py-1 border border-walnut/20 rounded-full text-[9px] uppercase tracking-[0.22em] text-walnut mb-6">
@@ -105,48 +149,66 @@ function HomePage() {
               src={clinic2}
               alt="Trimax Dent clinic interior"
               width={680}
-              height={1020}
-              className="w-full aspect-[4/5] object-cover"
+              height={760}
+              className="w-full aspect-[5/6] object-cover object-center"
             />
           </div>
         </div>
       </header>
 
-      {/* ===== Services Grid ===== */}
+      {/* ===== Trust Strip ===== */}
+      <section aria-label="Why patients choose us" className="px-5 -mt-2 mb-10 lg:mb-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="rounded-3xl bg-white/65 backdrop-blur-md border border-walnut/5 shadow-sm shadow-walnut/5 px-4 py-4 lg:px-6 lg:py-5">
+            <ul className="flex gap-3 overflow-x-auto lg:overflow-visible lg:flex-wrap lg:justify-between snap-x snap-mandatory scroll-pl-4 no-scrollbar">
+              {trustItems.map(({ icon: Icon, label }) => (
+                <li
+                  key={label}
+                  className="snap-start shrink-0 inline-flex items-center gap-2.5 h-14 px-5 rounded-full bg-ivory/80 border border-walnut/10 text-walnut transition hover:-translate-y-0.5 hover:border-amber-warm/60 hover:shadow-md hover:shadow-amber-warm/10"
+                >
+                  <Icon className="h-4 w-4 text-amber-warm" strokeWidth={1.6} />
+                  <span className="text-[12px] font-medium tracking-wide whitespace-nowrap">
+                    {label}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== Services (editorial) ===== */}
       <section id="services" className="bg-white py-16 lg:py-24 px-5">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10 lg:mb-14">
+          <div className="text-center mb-12 lg:mb-16 max-w-2xl mx-auto">
             <span className="text-[10px] uppercase tracking-[0.22em] text-amber-warm font-semibold">
-              Services
+              Our Services
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-walnut mt-3">
-              Artistry &amp; <span className="italic">Science</span>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-walnut mt-3 leading-tight">
+              Complete Dental Care,
+              <br className="hidden sm:block" />
+              <span className="italic">Tailored to You.</span>
             </h2>
+            <p className="text-walnut/70 leading-relaxed mt-5 text-sm lg:text-base">
+              From routine prevention to full smile design — every treatment is planned
+              around your face, your bite, and the result you want to live with.
+            </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5 max-w-5xl mx-auto">
-            {services.map((s) => (
-              <article
+          {/* Editorial grid: featured wide + stacked siblings */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-8">
+            {services.map((s, i) => (
+              <ServiceCard
                 key={s.title}
-                className="group rounded-2xl overflow-hidden bg-ivory/60 shadow-sm hover:shadow-lg transition"
-              >
-                <div className="aspect-square overflow-hidden">
-                  <img
-                    src={s.img}
-                    alt={s.title}
-                    loading="lazy"
-                    width={768}
-                    height={768}
-                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                  />
-                </div>
-                <div className="p-3 sm:p-4 text-center">
-                  <h3 className="font-serif text-base sm:text-lg text-walnut leading-tight">
-                    {s.title}
-                  </h3>
-                  <p className="text-[11px] sm:text-xs text-walnut/60 mt-1">{s.blurb}</p>
-                </div>
-              </article>
+                service={s}
+                className={
+                  s.featured
+                    ? "lg:col-span-2 lg:row-span-1"
+                    : "lg:col-span-1"
+                }
+                tall={s.featured}
+                priority={i < 2}
+              />
             ))}
           </div>
         </div>
@@ -184,10 +246,10 @@ function HomePage() {
 
           <div className="grid grid-cols-2 gap-3 lg:gap-4">
             <div className="rounded-2xl overflow-hidden">
-              <img src={clinic3} alt="Treatment room" loading="lazy" width={680} height={1020} className="w-full aspect-[3/4] object-cover" />
+              <img src={clinic3} alt="Treatment room" loading="lazy" width={680} height={900} className="w-full aspect-[3/4] object-cover object-center" />
             </div>
             <div className="rounded-2xl overflow-hidden mt-8">
-              <img src={clinic4} alt="Clinic reception" loading="lazy" width={680} height={1020} className="w-full aspect-[3/4] object-cover" />
+              <img src={clinic4} alt="Clinic reception" loading="lazy" width={680} height={900} className="w-full aspect-[3/4] object-cover object-center" />
             </div>
           </div>
         </div>
@@ -202,7 +264,7 @@ function HomePage() {
             loading="lazy"
             width={1920}
             height={1088}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-walnut/70 via-walnut/50 to-walnut/85" />
@@ -227,65 +289,124 @@ function HomePage() {
       </section>
 
       {/* ===== Contact ===== */}
-      <section id="contact" className="py-16 lg:py-24 px-5 max-w-6xl mx-auto">
-        <div className="text-center mb-10">
-          <span className="text-[10px] uppercase tracking-[0.22em] text-amber-warm font-semibold">
-            Visit Us
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-walnut mt-3 leading-tight">
-            Ready when <span className="italic">you</span> are.
-          </h2>
-        </div>
+      <section
+        id="contact"
+        className="relative py-20 lg:py-28 px-5 bg-[#5A4348] overflow-hidden"
+      >
+        {/* decorative blurred amber glow */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-32 -right-32 h-[28rem] w-[28rem] rounded-full bg-amber-warm/20 blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-40 -left-20 h-[24rem] w-[24rem] rounded-full bg-amber-warm/10 blur-3xl"
+        />
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start max-w-5xl mx-auto">
-          {/* Info cards */}
-          <div className="grid grid-cols-1 gap-3 order-2 lg:order-1">
-            <div className="bg-white rounded-2xl p-5 text-center lg:text-left">
-              <p className="text-[10px] uppercase tracking-[0.2em] text-walnut/50 mb-2">Address</p>
-              <p className="text-walnut text-sm leading-relaxed">
-                Rruga Telat Noga, 2nd floor<br />Above Fibank · Sarandë
-              </p>
-            </div>
-            <div className="bg-white rounded-2xl p-5 text-center lg:text-left">
-              <p className="text-[10px] uppercase tracking-[0.2em] text-walnut/50 mb-2">Call</p>
-              <a href="tel:+355692082722" className="font-serif text-xl text-walnut hover:text-amber-warm">
-                +355 69 208 2722
-              </a>
-            </div>
-            <div className="bg-white rounded-2xl p-5 text-center lg:text-left">
-              <p className="text-[10px] uppercase tracking-[0.2em] text-walnut/50 mb-2">Hours</p>
-              <p className="text-walnut text-sm leading-relaxed">
-                Mon–Fri · 09:00–18:00<br />Sat · 09:00–14:00
-              </p>
-            </div>
+        <div className="relative max-w-6xl mx-auto">
+          <div className="text-center mb-10 lg:mb-14">
+            <span className="text-[10px] uppercase tracking-[0.22em] text-amber-warm font-semibold">
+              Visit Us
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-ivory mt-3 leading-tight">
+              Ready when <span className="italic">you</span> are.
+            </h2>
+            <p className="text-ivory/70 mt-4 text-sm lg:text-base max-w-md mx-auto">
+              Book a consultation or message us on WhatsApp — we reply within one business day.
+            </p>
           </div>
 
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="bg-white rounded-3xl p-6 lg:p-8 shadow-xl shadow-walnut/5 space-y-3 order-1 lg:order-2"
-          >
-            <h3 className="font-serif text-xl text-walnut text-center">Request an Appointment</h3>
-            <p className="text-xs text-walnut/60 text-center mb-3">We'll reply within one business day.</p>
-            <input placeholder="Full name" className="h-12 w-full px-5 rounded-full bg-ivory/60 border border-transparent focus:border-amber-warm outline-none text-sm" />
-            <input type="email" placeholder="Email" className="h-12 w-full px-5 rounded-full bg-ivory/60 border border-transparent focus:border-amber-warm outline-none text-sm" />
-            <input placeholder="Phone (+code)" className="h-12 w-full px-5 rounded-full bg-ivory/60 border border-transparent focus:border-amber-warm outline-none text-sm" />
-            <select className="h-12 w-full px-5 rounded-full bg-ivory/60 border border-transparent focus:border-amber-warm outline-none text-sm text-walnut/70">
-              <option>I'm interested in…</option>
-              {services.map((s) => <option key={s.title}>{s.title}</option>)}
-              <option>Dental Tourism Plan</option>
-            </select>
-            <textarea
-              rows={3}
-              placeholder="Anything we should know? (optional)"
-              className="w-full px-5 py-3 rounded-2xl bg-ivory/60 border border-transparent focus:border-amber-warm outline-none text-sm resize-none"
-            />
-            <button
-              type="submit"
-              className="w-full py-4 bg-amber-warm text-white rounded-full font-bold uppercase text-xs tracking-[0.2em] hover:brightness-110 transition"
-            >
-              Send Request
-            </button>
-          </form>
+          <div className="bg-white rounded-[36px] lg:rounded-[44px] p-6 sm:p-10 lg:p-14 shadow-2xl shadow-walnut/20">
+            <div className="grid lg:grid-cols-[45fr_55fr] gap-10 lg:gap-14 items-start">
+              {/* Left — info */}
+              <div className="order-2 lg:order-1 space-y-6">
+                <div className="rounded-3xl overflow-hidden border border-walnut/10 shadow-sm">
+                  <iframe
+                    title="Trimax Dent Clinic location in Saranda"
+                    src="https://www.google.com/maps?q=Rruga+Telat+Noga,+Sarand%C3%AB,+Albania&output=embed"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="w-full h-56 lg:h-64 border-0"
+                  />
+                </div>
+
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.22em] text-walnut/50 mb-2">
+                    Address
+                  </p>
+                  <p className="text-walnut text-sm leading-relaxed">
+                    Rruga Telat Noga, 2nd floor
+                    <br />
+                    Above Fibank · Sarandë, Albania
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-3">
+                  <a
+                    href="tel:+355692082722"
+                    className="inline-flex items-center gap-3 h-14 px-5 rounded-2xl bg-ivory/70 border border-walnut/10 text-walnut hover:border-amber-warm/60 transition"
+                  >
+                    <Phone className="h-4 w-4 text-amber-warm" strokeWidth={1.8} />
+                    <span className="font-serif text-lg">+355 69 208 2722</span>
+                  </a>
+                  <a
+                    href="https://wa.me/355692082722"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center gap-2.5 h-14 px-5 rounded-2xl bg-[#25D366] text-white font-bold uppercase text-xs tracking-[0.18em] hover:brightness-110 transition"
+                  >
+                    <MessageCircle className="h-4 w-4" strokeWidth={2} />
+                    Message on WhatsApp
+                  </a>
+                </div>
+
+                <div className="flex items-start gap-3 text-walnut/75 text-sm">
+                  <Clock className="h-4 w-4 mt-0.5 text-amber-warm" strokeWidth={1.8} />
+                  <div>
+                    <p className="font-medium text-walnut">Mon – Sat</p>
+                    <p>09:00 – 19:00</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right — form */}
+              <form
+                onSubmit={(e) => e.preventDefault()}
+                className="order-1 lg:order-2 space-y-4"
+              >
+                <h3 className="font-serif text-2xl text-walnut">Book Consultation</h3>
+                <p className="text-sm text-walnut/60 -mt-2">
+                  Tell us a little about your visit and we'll be in touch.
+                </p>
+
+                <div className="grid sm:grid-cols-2 gap-3">
+                  <FormInput placeholder="Full name" />
+                  <FormInput placeholder="Phone (+code)" />
+                </div>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  <FormInput type="email" placeholder="Email" />
+                  <select className="h-14 w-full px-5 rounded-2xl bg-[#F8F4ED] border border-walnut/10 focus:border-amber-warm focus:ring-2 focus:ring-amber-warm/20 outline-none text-sm text-walnut/80 transition">
+                    <option>I'm interested in…</option>
+                    {services.map((s) => (
+                      <option key={s.title}>{s.title}</option>
+                    ))}
+                    <option>Dental Tourism Plan</option>
+                  </select>
+                </div>
+                <textarea
+                  rows={4}
+                  placeholder="Anything we should know? (optional)"
+                  className="w-full px-5 py-4 rounded-2xl bg-[#F8F4ED] border border-walnut/10 focus:border-amber-warm focus:ring-2 focus:ring-amber-warm/20 outline-none text-sm resize-none transition"
+                />
+                <button
+                  type="submit"
+                  className="w-full h-[60px] bg-amber-warm text-white rounded-2xl font-bold uppercase text-xs tracking-[0.2em] hover:brightness-110 transition"
+                >
+                  Book Consultation
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -311,5 +432,63 @@ function HomePage() {
         </p>
       </footer>
     </div>
+  );
+}
+
+function ServiceCard({
+  service,
+  className = "",
+  tall = false,
+  priority = false,
+}: {
+  service: { title: string; img: string; blurb: string };
+  className?: string;
+  tall?: boolean;
+  priority?: boolean;
+}) {
+  return (
+    <article
+      className={`group relative flex flex-col rounded-[28px] overflow-hidden bg-white border border-[#E6DED2] shadow-sm hover:shadow-xl hover:shadow-walnut/10 transition-all duration-500 hover:-translate-y-1 ${className}`}
+    >
+      <div
+        className={`overflow-hidden ${
+          tall ? "aspect-[16/10] lg:aspect-[16/9]" : "aspect-[4/3]"
+        }`}
+      >
+        <img
+          src={service.img}
+          alt={service.title}
+          loading={priority ? "eager" : "lazy"}
+          width={1200}
+          height={900}
+          className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition duration-700"
+        />
+      </div>
+      <div className="flex-1 flex flex-col p-6 lg:p-7">
+        <h3 className="font-serif text-xl lg:text-2xl text-walnut leading-tight">
+          {service.title}
+        </h3>
+        <p className="text-sm text-walnut/65 leading-relaxed mt-2 flex-1">
+          {service.blurb}
+        </p>
+        <div className="mt-5 flex items-center justify-between">
+          <span className="text-[10px] uppercase tracking-[0.22em] text-amber-warm font-semibold">
+            Learn more
+          </span>
+          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-ivory text-walnut group-hover:bg-amber-warm group-hover:text-white transition-all duration-300 group-hover:translate-x-1">
+            <ArrowUpRight className="h-4 w-4" strokeWidth={1.8} />
+          </span>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function FormInput(props: React.InputHTMLAttributes<HTMLInputElement>) {
+  return (
+    <input
+      {...props}
+      className="h-14 w-full px-5 rounded-2xl bg-[#F8F4ED] border border-walnut/10 focus:border-amber-warm focus:ring-2 focus:ring-amber-warm/20 outline-none text-sm text-walnut transition"
+    />
   );
 }
