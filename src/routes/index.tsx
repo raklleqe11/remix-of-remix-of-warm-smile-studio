@@ -244,14 +244,37 @@ function HomePage() {
             </dl>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 lg:gap-4">
-            <div className="rounded-2xl overflow-hidden">
-              <img src={clinic3} alt="Treatment room" loading="lazy" width={680} height={900} className="w-full aspect-[3/4] object-cover object-center" />
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.22em] text-amber-warm font-semibold text-center lg:text-left mb-4">
+              Before &amp; After
+            </p>
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+              <figure className="rounded-2xl overflow-hidden border border-walnut/10 shadow-sm shadow-walnut/10 bg-white">
+                <img
+                  src={clinic3}
+                  alt="Smile transformation — before and after"
+                  loading="lazy"
+                  width={680}
+                  height={850}
+                  className="w-full aspect-[4/5] object-cover object-center"
+                />
+              </figure>
+              <figure className="rounded-2xl overflow-hidden border border-walnut/10 shadow-sm shadow-walnut/10 bg-white">
+                <img
+                  src={clinic4}
+                  alt="Smile transformation — before and after"
+                  loading="lazy"
+                  width={680}
+                  height={850}
+                  className="w-full aspect-[4/5] object-cover object-center"
+                />
+              </figure>
             </div>
-            <div className="rounded-2xl overflow-hidden mt-8">
-              <img src={clinic4} alt="Clinic reception" loading="lazy" width={680} height={900} className="w-full aspect-[3/4] object-cover object-center" />
-            </div>
+            <p className="text-[11px] text-walnut/50 text-center lg:text-left mt-3 italic">
+              Real patient results · TRIMAX dent
+            </p>
           </div>
+
         </div>
       </section>
 
