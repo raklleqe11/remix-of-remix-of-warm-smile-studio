@@ -1,14 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  Star,
-  Sparkles,
-  Globe2,
-  MapPin,
-  CalendarHeart,
-  ArrowUpRight,
   Phone,
   MessageCircle,
+  MapPin,
   Clock,
+  ArrowUpRight,
+  Sparkles,
+  Zap,
+  Smile,
+  ShieldCheck,
+  HeartPulse,
+  Baby,
+  Stethoscope,
 } from "lucide-react";
 import logoAsset from "@/assets/trimax_dent_logo.webp.asset.json";
 import clinic2 from "@/assets/clinic-2.jpg";
@@ -21,7 +24,6 @@ import svcImplant from "@/assets/implants.webp.asset.json";
 import svcOrtho from "@/assets/orthodontics.webp.asset.json";
 import svcRestorative from "@/assets/restorative.webp.asset.json";
 import svcFamily from "@/assets/family_care.webp.asset.json";
-import svcEmergency from "@/assets/emergency.webp.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -45,204 +47,214 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const services = [
-  {
-    title: "Smile Design",
-    img: svcSmile.url,
-    blurb: "Bespoke smile architecture, planned digitally and crafted by hand for a result that feels unmistakably yours.",
-    featured: true,
-  },
-  {
-    title: "Veneers & Whitening",
-    img: svcVeneers.url,
-    blurb: "Bright, natural-looking results — whitening, veneers and confidence-focused aesthetic care.",
-  },
-  {
-    title: "Implants",
-    img: svcImplant.url,
-    blurb: "Permanent, biocompatible solutions for missing teeth, planned with 3D imaging.",
-  },
-  {
-    title: "Orthodontics",
-    img: svcOrtho.url,
-    blurb: "Clear aligners and modern braces, calibrated to your bite.",
-    featured: true,
-  },
-  {
-    title: "Restorative",
-    img: svcRestorative.url,
-    blurb: "Crowns, bridges and full-mouth rehabilitation done with precision.",
-  },
-  {
-    title: "Family Care",
-    img: svcFamily.url,
-    blurb: "Gentle, preventive dentistry for every age in your family.",
-  },
+const INK = "#3D2B1F";
+const IVORY = "#F5F0E8";
+const AMBER = "#D97706";
+
+const trustWords = [
+  "5.0 Google Reviews",
+  "10+ Years of Practice",
+  "English & Italian Spoken",
+  "Digital Smile Design",
+  "Central Saranda",
+  "Family & Aesthetic Care",
 ];
 
-const trustItems = [
-  { icon: Star, label: "5.0 Reviews" },
-  { icon: CalendarHeart, label: "10+ Years" },
-  { icon: Globe2, label: "Multilingual" },
-  { icon: MapPin, label: "Central Saranda" },
-  { icon: Sparkles, label: "Aesthetic Dentistry" },
+const services = [
+  { title: "Smile Design", img: svcSmile.url, blurb: "Digitally planned, hand-finished smiles tailored to your face.", icon: Sparkles },
+  { title: "Veneers & Whitening", img: svcVeneers.url, blurb: "Bright, natural-looking results with lasting shade stability.", icon: Smile },
+  { title: "Implants", img: svcImplant.url, blurb: "Permanent, biocompatible solutions planned with 3D imaging.", icon: ShieldCheck },
+  { title: "Orthodontics", img: svcOrtho.url, blurb: "Clear aligners and modern braces, calibrated to your bite.", icon: Zap },
+  { title: "Restorative", img: svcRestorative.url, blurb: "Crowns, bridges and full-mouth rehabilitation done precisely.", icon: Stethoscope },
+  { title: "Family Care", img: svcFamily.url, blurb: "Gentle, preventive dentistry for every age in your family.", icon: Baby },
 ];
 
 function HomePage() {
   return (
-    <div className="bg-ivory text-ink selection:bg-amber-warm/30 overflow-x-hidden">
+    <div
+      className="min-h-screen w-full text-[color:var(--ink)]"
+      style={{ backgroundColor: IVORY, color: INK }}
+    >
       {/* ===== Nav ===== */}
-      <nav className="sticky top-0 z-40 bg-walnut/95 backdrop-blur-md border-b border-ivory/10">
-        <div className="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
+      <nav className="sticky top-0 z-40 backdrop-blur-md border-b" style={{ backgroundColor: `${IVORY}ee`, borderColor: `${INK}12` }}>
+        <div className="max-w-7xl mx-auto px-5 lg:px-8 py-4 flex items-center justify-between gap-4">
           <a href="#" className="flex items-center gap-2 min-w-0">
-            <img
-              src={logoAsset.url}
-              alt="Trimax Dent Clinic"
-              width={180}
-              height={60}
-              className="h-10 sm:h-11 w-auto"
-            />
+            <img src={logoAsset.url} alt="Trimax Dent Clinic" width={180} height={60} className="h-10 sm:h-11 w-auto" />
           </a>
+          <div className="hidden md:flex items-center gap-8 text-sm font-medium" style={{ color: `${INK}b3` }}>
+            <a href="#services" className="hover:text-[color:var(--ink)] transition">Services</a>
+            <a href="#clinic" className="hover:text-[color:var(--ink)] transition">Clinic</a>
+            <a href="#tourism" className="hover:text-[color:var(--ink)] transition">Tourism</a>
+            <a href="#contact" className="hover:text-[color:var(--ink)] transition">Contact</a>
+          </div>
           <a
             href="#contact"
-            className="shrink-0 px-5 py-2.5 bg-amber-warm text-white rounded-full text-[10px] font-bold uppercase tracking-[0.15em] hover:brightness-110 transition"
+            className="shrink-0 px-5 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-[0.15em] text-white hover:brightness-110 transition"
+            style={{ backgroundColor: AMBER }}
           >
             Book
           </a>
         </div>
       </nav>
 
-      {/* ===== Hero ===== */}
-      <header className="px-5 pt-12 pb-10 lg:pt-20 lg:pb-16 max-w-6xl mx-auto">
-        <div className="grid lg:grid-cols-2 lg:gap-16 items-center">
-          <div className="text-center lg:text-left max-w-xl mx-auto lg:mx-0">
-            <span className="inline-block px-3 py-1 border border-walnut/20 rounded-full text-[9px] uppercase tracking-[0.22em] text-walnut mb-6">
-              Saranda · Albania
-            </span>
-            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-walnut leading-[1.05] mb-5">
-              Confidence
-              <br />
-              <span className="italic text-ink">Redefined.</span>
-            </h1>
-            <p className="text-base lg:text-lg text-walnut/70 leading-relaxed mb-8 mx-auto lg:mx-0 max-w-md">
-              Boutique dentistry where modern clinical precision meets the warmth of the Mediterranean.
-            </p>
-            <div className="flex flex-col items-center lg:items-start gap-3">
+      <main className="max-w-7xl w-full mx-auto px-5 lg:px-8 py-10 md:py-16">
+        {/* ===== Hero & Stats Bento ===== */}
+        <section className="grid grid-cols-1 md:grid-cols-12 gap-5 lg:gap-6 mb-6 lg:mb-8">
+          {/* Hero tile */}
+          <div
+            className="md:col-span-12 lg:col-span-8 rounded-[2rem] lg:rounded-[3rem] p-8 md:p-12 lg:p-16 flex flex-col justify-between overflow-hidden relative min-h-[440px] lg:min-h-[560px]"
+            style={{ backgroundColor: INK, color: IVORY }}
+          >
+            <div className="relative z-10">
+              <span
+                className="inline-block px-4 py-1.5 border rounded-full text-[10px] font-bold uppercase tracking-widest mb-8"
+                style={{ borderColor: `${IVORY}33` }}
+              >
+                Saranda · Boutique Dental Excellence
+              </span>
+              <h1
+                className="font-display font-extrabold leading-[0.85] mb-8 tracking-tighter text-6xl sm:text-7xl md:text-8xl lg:text-[9rem]"
+              >
+                TRIMAX
+                <br />
+                <span style={{ color: AMBER }}>DENT.</span>
+              </h1>
+              <p className="max-w-md text-base lg:text-lg leading-relaxed" style={{ color: `${IVORY}b3` }}>
+                Where Mediterranean tranquility meets world-class implantology. Precision dentistry for global smiles.
+              </p>
+            </div>
+            <div className="relative z-10 mt-12 flex flex-wrap gap-3 lg:gap-4">
               <a
                 href="#contact"
-                className="w-full max-w-xs lg:w-auto px-8 py-4 bg-amber-warm text-white rounded-full font-bold uppercase text-xs tracking-[0.18em] hover:brightness-110 transition text-center"
+                className="px-8 py-4 font-bold rounded-full hover:brightness-110 hover:scale-[1.03] transition-all text-sm tracking-wide"
+                style={{ backgroundColor: AMBER, color: IVORY }}
               >
-                Book Your Visit
+                Book Consultation
               </a>
               <a
-                href="tel:+355692082722"
-                className="text-sm font-medium text-walnut/70 hover:text-amber-warm"
+                href="#services"
+                className="px-8 py-4 font-bold rounded-full transition-all text-sm tracking-wide border"
+                style={{ borderColor: `${IVORY}33`, color: IVORY }}
               >
-                or call +355 69 208 2722
+                Explore Services
               </a>
             </div>
-          </div>
-
-          {/* Hero image */}
-          <div className="mt-12 lg:mt-0 rounded-[32px] overflow-hidden border-[6px] border-white shadow-2xl shadow-walnut/15 mx-auto max-w-md lg:max-w-none w-full">
-            <img
-              src={clinic2}
-              alt="Trimax Dent clinic interior"
-              width={680}
-              height={760}
-              className="w-full aspect-[5/6] object-cover object-center"
+            <div
+              className="absolute -right-24 -bottom-24 w-96 h-96 rounded-full blur-3xl pointer-events-none"
+              style={{ backgroundColor: `${AMBER}1a` }}
             />
           </div>
-        </div>
-      </header>
 
-      {/* ===== Trust Strip (Marquee) ===== */}
-      <section aria-label="Why patients choose us" className="px-5 -mt-2 mb-10 lg:mb-16">
-        <div className="max-w-6xl mx-auto">
-          <div className="rounded-3xl bg-white/65 backdrop-blur-md border border-walnut/5 shadow-sm shadow-walnut/5 px-4 py-4 lg:px-6 lg:py-5 overflow-hidden">
-            <div className="animate-marquee">
-              {/* first set */}
-              {trustItems.map(({ icon: Icon, label }) => (
-                <div
-                  key={`a-${label}`}
-                  className="shrink-0 inline-flex items-center gap-2.5 h-14 px-5 mx-1.5 rounded-full bg-ivory/80 border border-walnut/10 text-walnut transition hover:-translate-y-0.5 hover:border-amber-warm/60 hover:shadow-md hover:shadow-amber-warm/10"
-                >
-                  <Icon className="h-4 w-4 text-amber-warm" strokeWidth={1.6} />
-                  <span className="text-[12px] font-medium tracking-wide whitespace-nowrap">
-                    {label}
-                  </span>
-                </div>
-              ))}
-              {/* duplicate set for seamless loop */}
-              {trustItems.map(({ icon: Icon, label }) => (
-                <div
-                  key={`b-${label}`}
-                  className="shrink-0 inline-flex items-center gap-2.5 h-14 px-5 mx-1.5 rounded-full bg-ivory/80 border border-walnut/10 text-walnut transition hover:-translate-y-0.5 hover:border-amber-warm/60 hover:shadow-md hover:amber-warm/10"
-                >
-                  <Icon className="h-4 w-4 text-amber-warm" strokeWidth={1.6} />
-                  <span className="text-[12px] font-medium tracking-wide whitespace-nowrap">
-                    {label}
-                  </span>
-                </div>
-              ))}
+          {/* Right stats column */}
+          <div className="md:col-span-12 lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 lg:grid-rows-2 gap-5 lg:gap-6">
+            <div
+              className="bg-white rounded-[2rem] lg:rounded-[3rem] p-6 lg:p-8 flex flex-col justify-center items-center text-center shadow-sm min-h-[180px]"
+              style={{ border: `1px solid ${INK}0d` }}
+            >
+              <div className="font-display font-extrabold italic text-5xl lg:text-6xl mb-1" style={{ color: INK }}>10+</div>
+              <div className="text-[10px] font-bold uppercase tracking-widest" style={{ color: `${INK}66` }}>Years of Mastery</div>
+            </div>
+            <div className="rounded-[2rem] lg:rounded-[3rem] overflow-hidden min-h-[180px]">
+              <img
+                src={clinic2}
+                alt="Trimax Dent clinic interior"
+                className="w-full h-full object-cover object-center"
+              />
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ===== Services (editorial) ===== */}
-      <section id="services" className="bg-white py-16 lg:py-24 px-5">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12 lg:mb-16 max-w-2xl mx-auto">
-            <span className="text-[10px] uppercase tracking-[0.22em] text-amber-warm font-semibold">
-              Our Services
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-walnut mt-3 leading-tight">
-              Complete Dental Care,
-              <br className="hidden sm:block" />
-              <span className="italic">Tailored to You.</span>
-            </h2>
-            <p className="text-walnut/70 leading-relaxed mt-5 text-sm lg:text-base">
-              From routine prevention to full smile design — every treatment is planned
-              around your face, your bite, and the result you want to live with.
-            </p>
-          </div>
-
-          {/* Editorial grid: featured wide + stacked siblings */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-8">
-            {services.map((s, i) => (
-              <ServiceCard
-                key={s.title}
-                service={s}
-                className={
-                  s.featured
-                    ? "lg:col-span-2 lg:row-span-1"
-                    : "lg:col-span-1"
-                }
-                tall={s.featured}
-                priority={i < 2}
-              />
+        {/* ===== Trust Marquee ===== */}
+        <section
+          aria-label="Trust indicators"
+          className="w-full overflow-hidden py-8 lg:py-10 border-y mb-6 lg:mb-8"
+          style={{ borderColor: `${INK}1a` }}
+        >
+          <div className="flex whitespace-nowrap animate-marquee">
+            {[...trustWords, ...trustWords].map((w, i) => (
+              <span
+                key={i}
+                className="font-display font-bold uppercase mx-8 lg:mx-12 text-lg md:text-2xl lg:text-3xl opacity-30 shrink-0"
+              >
+                {w}
+                <span className="mx-6 lg:mx-10" style={{ color: AMBER, opacity: 0.6 }}>•</span>
+              </span>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ===== Clinic ===== */}
-      <section id="clinic" className="py-16 lg:py-24 px-5 max-w-6xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <div className="text-center lg:text-left max-w-xl mx-auto lg:mx-0">
-            <span className="text-[10px] uppercase tracking-[0.22em] text-amber-warm font-semibold">
-              The Clinic
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-walnut mt-3 mb-5 leading-tight">
-              Where surgery feels like <span className="italic">sanctuary</span>.
-            </h2>
-            <p className="text-walnut/70 leading-relaxed mb-8 mx-auto lg:mx-0 max-w-md">
-              Every curve of our interior is designed to reduce anxiety — a state of clinical calm
-              you can feel the moment you step in.
+        {/* ===== Services Bento ===== */}
+        <section id="services" className="mb-6 lg:mb-8">
+          <div className="flex items-end justify-between flex-wrap gap-4 mb-6 lg:mb-8">
+            <div>
+              <span className="text-[10px] uppercase tracking-[0.22em] font-bold" style={{ color: AMBER }}>Our Services</span>
+              <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl tracking-tight mt-2">
+                Complete care,<br /><span className="italic">tailored to you.</span>
+              </h2>
+            </div>
+            <p className="max-w-sm text-sm lg:text-base" style={{ color: `${INK}b3` }}>
+              From routine prevention to full smile design — every treatment planned around your face, bite, and result you want to live with.
             </p>
+          </div>
 
-            <dl className="grid grid-cols-2 gap-x-4 gap-y-6 text-left max-w-md mx-auto lg:mx-0">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-5 lg:gap-6">
+            {/* Before & After tile */}
+            <div
+              className="md:col-span-12 lg:col-span-4 rounded-[2rem] lg:rounded-[3rem] p-8 lg:p-10 flex flex-col justify-between"
+              style={{ backgroundColor: "#E5DFD5" }}
+            >
+              <div>
+                <span className="text-[10px] uppercase tracking-[0.22em] font-bold" style={{ color: AMBER }}>Real Patients</span>
+                <h3 className="font-display font-extrabold text-3xl lg:text-4xl mt-2 mb-6">Before &amp; After</h3>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-white">
+                    <img src={clinic3} alt="Smile transformation before" className="w-full h-full object-cover object-center" />
+                  </div>
+                  <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-white">
+                    <img src={clinic4} alt="Smile transformation after" className="w-full h-full object-cover object-center" />
+                  </div>
+                </div>
+              </div>
+              <p className="text-[11px] font-bold uppercase tracking-widest mt-6" style={{ color: `${INK}99` }}>
+                Visible results. No compromise.
+              </p>
+            </div>
+
+            {/* Services grid (2×3) */}
+            <div className="md:col-span-12 lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
+              {services.slice(0, 4).map((s, i) => {
+                const dark = i === 1 || i === 2;
+                return (
+                  <ServiceCard key={s.title} service={s} dark={dark} />
+                );
+              })}
+            </div>
+
+            {/* Remaining services row */}
+            {services.slice(4).map((s, i) => (
+              <div key={s.title} className={`md:col-span-6 ${i === 0 ? "lg:col-span-6" : "lg:col-span-6"}`}>
+                <ServiceCard service={s} dark={i === 1} wide />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ===== Clinic ===== */}
+        <section id="clinic" className="grid grid-cols-1 md:grid-cols-12 gap-5 lg:gap-6 mb-6 lg:mb-8">
+          <div
+            className="md:col-span-12 lg:col-span-5 rounded-[2rem] lg:rounded-[3rem] p-8 lg:p-12 bg-white flex flex-col justify-between"
+            style={{ border: `1px solid ${INK}0d` }}
+          >
+            <div>
+              <span className="text-[10px] uppercase tracking-[0.22em] font-bold" style={{ color: AMBER }}>The Clinic</span>
+              <h2 className="font-display font-extrabold text-3xl lg:text-5xl leading-tight tracking-tight mt-2 mb-5">
+                Where surgery feels like <span className="italic">sanctuary</span>.
+              </h2>
+              <p className="text-sm lg:text-base leading-relaxed mb-8" style={{ color: `${INK}b3` }}>
+                Every curve of our interior is designed to reduce anxiety — a state of clinical calm you can feel the moment you step in.
+              </p>
+            </div>
+            <dl className="grid grid-cols-2 gap-x-4 gap-y-6">
               {[
                 ["Modern Suite", "3D imaging & precision tools."],
                 ["Multilingual", "Albanian, English, Italian."],
@@ -250,220 +262,163 @@ function HomePage() {
                 ["Calm by Design", "Warm lighting, no glare."],
               ].map(([t, d]) => (
                 <div key={t}>
-                  <dt className="text-amber-warm font-semibold text-sm mb-1">{t}</dt>
-                  <dd className="text-xs text-walnut/60 leading-relaxed">{d}</dd>
+                  <dt className="font-bold text-sm mb-1" style={{ color: AMBER }}>{t}</dt>
+                  <dd className="text-xs leading-relaxed" style={{ color: `${INK}99` }}>{d}</dd>
                 </div>
               ))}
             </dl>
           </div>
-
-          <div>
-            <p className="text-[10px] uppercase tracking-[0.22em] text-amber-warm font-semibold text-center lg:text-left mb-4">
-              Before &amp; After
-            </p>
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              <figure className="rounded-2xl overflow-hidden border border-walnut/10 shadow-sm shadow-walnut/10 bg-white">
-                <img
-                  src={clinic3}
-                  alt="Smile transformation — before and after"
-                  loading="lazy"
-                  width={680}
-                  height={850}
-                  className="w-full aspect-[4/5] object-cover object-center"
-                />
-              </figure>
-              <figure className="rounded-2xl overflow-hidden border border-walnut/10 shadow-sm shadow-walnut/10 bg-white">
-                <img
-                  src={clinic4}
-                  alt="Smile transformation — before and after"
-                  loading="lazy"
-                  width={680}
-                  height={850}
-                  className="w-full aspect-[4/5] object-cover object-center"
-                />
-              </figure>
-            </div>
-            <p className="text-[11px] text-walnut/50 text-center lg:text-left mt-3 italic">
-              Real patient results · TRIMAX dent
-            </p>
+          <div className="md:col-span-12 lg:col-span-7 rounded-[2rem] lg:rounded-[3rem] overflow-hidden min-h-[360px] lg:min-h-[520px]">
+            <img src={clinic2} alt="Trimax Dent clinical suite" className="w-full h-full object-cover object-center" />
           </div>
+        </section>
 
-        </div>
-      </section>
-
-      {/* ===== Tourism ===== */}
-      <section id="tourism" className="relative py-20 lg:py-28 px-5 overflow-hidden bg-walnut">
-        <div className="absolute inset-0 opacity-25">
-          <img
-            src={sarandaImg}
-            alt="Saranda coastline"
-            loading="lazy"
-            width={1920}
-            height={1088}
-            className="w-full h-full object-cover object-center"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-walnut/70 via-walnut/50 to-walnut/85" />
-        <div className="relative max-w-xl mx-auto text-center">
-          <span className="text-[10px] uppercase tracking-[0.28em] text-amber-warm font-semibold">
-            Dental Tourism
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-ivory mt-4 mb-5 italic leading-tight">
-            Your perfect smile starts in Saranda.
-          </h2>
-          <p className="text-ivory/75 text-sm lg:text-base mb-8 leading-relaxed">
-            Combine treatment with a Mediterranean escape. Concierge support, travel logistics,
-            same-day consultations on arrival.
-          </p>
-          <a
-            href="#contact"
-            className="inline-block px-8 py-4 bg-amber-warm text-white rounded-full font-bold uppercase text-xs tracking-[0.18em] hover:brightness-110 transition"
-          >
-            Request a Plan
-          </a>
-        </div>
-      </section>
-
-      {/* ===== Contact ===== */}
-      <section
-        id="contact"
-        className="relative py-20 lg:py-28 px-5 bg-[#5A4348] overflow-hidden"
-      >
-        {/* decorative blurred amber glow */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-32 -right-32 h-[28rem] w-[28rem] rounded-full bg-amber-warm/20 blur-3xl"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-40 -left-20 h-[24rem] w-[24rem] rounded-full bg-amber-warm/10 blur-3xl"
-        />
-
-        <div className="relative max-w-6xl mx-auto">
-          <div className="text-center mb-10 lg:mb-14">
-            <span className="text-[10px] uppercase tracking-[0.22em] text-amber-warm font-semibold">
-              Visit Us
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-ivory mt-3 leading-tight">
-              Ready when <span className="italic">you</span> are.
-            </h2>
-            <p className="text-ivory/70 mt-4 text-sm lg:text-base max-w-md mx-auto">
-              Book a consultation or message us on WhatsApp — we reply within one business day.
-            </p>
-          </div>
-
-          <div className="bg-white rounded-[36px] lg:rounded-[44px] p-6 sm:p-10 lg:p-14 shadow-2xl shadow-walnut/20">
-            <div className="grid lg:grid-cols-[45fr_55fr] gap-10 lg:gap-14 items-start">
-              {/* Left — info */}
-              <div className="order-2 lg:order-1 space-y-6">
-                <div className="rounded-3xl overflow-hidden border border-walnut/10 shadow-sm">
-                  <iframe
-                    title="Trimax Dent Clinic location in Saranda"
-                    src="https://www.google.com/maps?q=Rruga+Telat+Noga,+Sarand%C3%AB,+Albania&output=embed"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="w-full h-56 lg:h-64 border-0"
-                  />
-                </div>
-
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.22em] text-walnut/50 mb-2">
-                    Address
-                  </p>
-                  <p className="text-walnut text-sm leading-relaxed">
-                    Rruga Telat Noga, 2nd floor
-                    <br />
-                    Above Fibank · Sarandë, Albania
-                  </p>
-                </div>
-
-                <div className="flex flex-col gap-3">
-                  <a
-                    href="tel:+355692082722"
-                    className="inline-flex items-center gap-3 h-14 px-5 rounded-2xl bg-ivory/70 border border-walnut/10 text-walnut hover:border-amber-warm/60 transition"
-                  >
-                    <Phone className="h-4 w-4 text-amber-warm" strokeWidth={1.8} />
-                    <span className="font-serif text-lg">+355 69 208 2722</span>
-                  </a>
-                  <a
-                    href="https://wa.me/355692082722"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center justify-center gap-2.5 h-14 px-5 rounded-2xl bg-[#25D366] text-white font-bold uppercase text-xs tracking-[0.18em] hover:brightness-110 transition"
-                  >
-                    <MessageCircle className="h-4 w-4" strokeWidth={2} />
-                    Message on WhatsApp
-                  </a>
-                </div>
-
-                <div className="flex items-start gap-3 text-walnut/75 text-sm">
-                  <Clock className="h-4 w-4 mt-0.5 text-amber-warm" strokeWidth={1.8} />
-                  <div>
-                    <p className="font-medium text-walnut">Mon – Sat</p>
-                    <p>09:00 – 19:00</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right — form */}
-              <form
-                onSubmit={(e) => e.preventDefault()}
-                className="order-1 lg:order-2 space-y-4"
-              >
-                <h3 className="font-serif text-2xl text-walnut">Book Consultation</h3>
-                <p className="text-sm text-walnut/60 -mt-2">
-                  Tell us a little about your visit and we'll be in touch.
+        {/* ===== Tourism ===== */}
+        <section id="tourism" className="grid grid-cols-1 md:grid-cols-12 gap-5 lg:gap-6 mb-6 lg:mb-8">
+          <div className="md:col-span-12 lg:col-span-7 h-[400px] lg:h-[500px] rounded-[2rem] lg:rounded-[3rem] overflow-hidden relative">
+            <img src={sarandaImg} alt="Saranda coastline" className="w-full h-full object-cover object-center" />
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `linear-gradient(to top, ${INK} 0%, ${INK}33 40%, transparent 80%)`,
+              }}
+            />
+            <div className="absolute bottom-8 lg:bottom-10 left-8 lg:left-10 right-8 lg:right-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <div className="max-w-sm" style={{ color: IVORY }}>
+                <span className="text-[10px] uppercase tracking-[0.22em] font-bold" style={{ color: AMBER }}>Dental Tourism</span>
+                <h3 className="font-display font-extrabold text-3xl lg:text-5xl mt-2 mb-4 leading-tight">Your smile starts by the Ionian.</h3>
+                <p className="text-sm leading-relaxed opacity-80">
+                  Combine treatment with a Mediterranean escape. Concierge support, travel logistics, same-day consultations on arrival.
                 </p>
-
-                <div className="grid sm:grid-cols-2 gap-3">
-                  <FormInput placeholder="Full name" />
-                  <FormInput placeholder="Phone (+code)" />
-                </div>
-                <div className="grid sm:grid-cols-2 gap-3">
-                  <FormInput type="email" placeholder="Email" />
-                  <select className="h-14 w-full px-5 rounded-2xl bg-[#F8F4ED] border border-walnut/10 focus:border-amber-warm focus:ring-2 focus:ring-amber-warm/20 outline-none text-sm text-walnut/80 transition">
-                    <option>I'm interested in…</option>
-                    {services.map((s) => (
-                      <option key={s.title}>{s.title}</option>
-                    ))}
-                    <option>Dental Tourism Plan</option>
-                  </select>
-                </div>
-                <textarea
-                  rows={4}
-                  placeholder="Anything we should know? (optional)"
-                  className="w-full px-5 py-4 rounded-2xl bg-[#F8F4ED] border border-walnut/10 focus:border-amber-warm focus:ring-2 focus:ring-amber-warm/20 outline-none text-sm resize-none transition"
-                />
-                <button
-                  type="submit"
-                  className="w-full h-[60px] bg-amber-warm text-white rounded-2xl font-bold uppercase text-xs tracking-[0.2em] hover:brightness-110 transition"
-                >
-                  Book Consultation
-                </button>
-              </form>
+              </div>
+              <a
+                href="#contact"
+                className="shrink-0 px-8 py-4 font-bold rounded-full transition-all hover:scale-[1.03] text-sm tracking-wide"
+                style={{ backgroundColor: IVORY, color: INK }}
+              >
+                Request a Plan
+              </a>
             </div>
           </div>
-        </div>
-      </section>
+
+          <div
+            className="md:col-span-12 lg:col-span-5 bg-white p-8 lg:p-12 rounded-[2rem] lg:rounded-[3rem] flex flex-col justify-between"
+            style={{ border: `1px solid ${INK}0d` }}
+          >
+            <div>
+              <span className="text-[10px] uppercase tracking-[0.22em] font-bold" style={{ color: AMBER }}>Quick Contact</span>
+              <h3 className="font-display font-extrabold text-2xl lg:text-3xl mt-2 mb-8">Reach us directly.</h3>
+              <div className="space-y-6">
+                <ContactRow icon={<Phone className="w-5 h-5" strokeWidth={1.8} />} label="Phone / WhatsApp" value="+355 69 208 2722" href="tel:+355692082722" />
+                <ContactRow icon={<MapPin className="w-5 h-5" strokeWidth={1.8} />} label="Address" value="Rruga Telat Noga, Sarandë" />
+                <ContactRow icon={<Clock className="w-5 h-5" strokeWidth={1.8} />} label="Hours" value="Mon–Sat · 09:00–19:00" />
+                <ContactRow icon={<HeartPulse className="w-5 h-5" strokeWidth={1.8} />} label="Response Time" value="Under 2 hours" />
+              </div>
+            </div>
+            <a
+              href="https://wa.me/355692082722"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-10 inline-flex items-center justify-center gap-2 h-14 rounded-2xl font-bold uppercase text-xs tracking-[0.18em] text-white transition hover:brightness-110"
+              style={{ backgroundColor: "#25D366" }}
+            >
+              <MessageCircle className="h-4 w-4" strokeWidth={2} />
+              Message on WhatsApp
+            </a>
+          </div>
+        </section>
+
+        {/* ===== Contact / Booking ===== */}
+        <section
+          id="contact"
+          className="rounded-[2rem] lg:rounded-[3rem] p-8 md:p-12 lg:p-16 relative overflow-hidden"
+          style={{ backgroundColor: INK, color: IVORY }}
+        >
+          <div
+            className="absolute -top-32 -right-32 h-[28rem] w-[28rem] rounded-full blur-3xl pointer-events-none"
+            style={{ backgroundColor: `${AMBER}33` }}
+          />
+          <div
+            className="absolute -bottom-40 -left-20 h-96 w-96 rounded-full blur-3xl pointer-events-none"
+            style={{ backgroundColor: `${AMBER}1a` }}
+          />
+
+          <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+            <div className="lg:col-span-5">
+              <span className="text-[10px] uppercase tracking-[0.22em] font-bold" style={{ color: AMBER }}>Visit Us</span>
+              <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl leading-[0.95] tracking-tight mt-3 mb-6">
+                Ready when <span className="italic">you</span> are.
+              </h2>
+              <p className="text-base leading-relaxed mb-8" style={{ color: `${IVORY}b3` }}>
+                Book a consultation or message us on WhatsApp — we reply within one business day.
+              </p>
+              <div className="rounded-3xl overflow-hidden" style={{ border: `1px solid ${IVORY}1a` }}>
+                <iframe
+                  title="Trimax Dent Clinic location in Saranda"
+                  src="https://www.google.com/maps?q=Rruga+Telat+Noga,+Sarand%C3%AB,+Albania&output=embed"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-56 lg:h-64 border-0"
+                />
+              </div>
+            </div>
+
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="lg:col-span-7 bg-white rounded-[2rem] lg:rounded-[2.5rem] p-6 md:p-10 space-y-4"
+              style={{ color: INK }}
+            >
+              <h3 className="font-display font-extrabold text-2xl lg:text-3xl">Book Consultation</h3>
+              <p className="text-sm -mt-1" style={{ color: `${INK}99` }}>
+                Tell us a little about your visit and we'll be in touch.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <FormInput placeholder="Full name" />
+                <FormInput placeholder="Phone (+code)" />
+              </div>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <FormInput type="email" placeholder="Email" />
+                <select
+                  className="h-14 w-full px-5 rounded-2xl outline-none text-sm transition focus:ring-2"
+                  style={{ backgroundColor: "#F8F4ED", border: `1px solid ${INK}1a`, color: `${INK}cc` }}
+                >
+                  <option>I'm interested in…</option>
+                  {services.map((s) => (
+                    <option key={s.title}>{s.title}</option>
+                  ))}
+                  <option>Dental Tourism Plan</option>
+                </select>
+              </div>
+              <textarea
+                rows={4}
+                placeholder="Anything we should know? (optional)"
+                className="w-full px-5 py-4 rounded-2xl outline-none text-sm resize-none transition focus:ring-2"
+                style={{ backgroundColor: "#F8F4ED", border: `1px solid ${INK}1a`, color: INK }}
+              />
+              <button
+                type="submit"
+                className="w-full h-[60px] rounded-2xl font-bold uppercase text-xs tracking-[0.2em] text-white hover:brightness-110 transition"
+                style={{ backgroundColor: AMBER }}
+              >
+                Book Consultation
+              </button>
+            </form>
+          </div>
+        </section>
+      </main>
 
       {/* ===== Footer ===== */}
-      <footer className="bg-walnut text-ivory py-14 px-5 text-center">
-        <img
-          src={logoAsset.url}
-          alt="Trimax Dent"
-          width={260}
-          height={86}
-          className="h-20 sm:h-24 w-auto mx-auto mb-6"
-        />
-        <p className="text-ivory/60 text-xs sm:text-sm max-w-sm mx-auto leading-relaxed mb-6">
+      <footer className="py-14 px-5 text-center" style={{ backgroundColor: INK, color: IVORY }}>
+        <img src={logoAsset.url} alt="Trimax Dent" width={260} height={86} className="h-20 sm:h-24 w-auto mx-auto mb-6" />
+        <p className="text-xs sm:text-sm max-w-sm mx-auto leading-relaxed mb-6" style={{ color: `${IVORY}99` }}>
           Boutique dental care focused on longevity, aesthetics & patient comfort.
         </p>
-        <div className="text-xs sm:text-sm text-ivory/70 space-y-1 mb-6">
+        <div className="text-xs sm:text-sm space-y-1 mb-6" style={{ color: `${IVORY}b3` }}>
           <p>Rruga Telat Noga · Sarandë, Albania</p>
-          <a href="tel:+355692082722" className="block hover:text-amber-warm">+355 69 208 2722</a>
-          <a href="mailto:hello@trimaxdent.al" className="block hover:text-amber-warm">hello@trimaxdent.al</a>
+          <a href="tel:+355692082722" className="block hover:opacity-80" style={{ color: AMBER }}>+355 69 208 2722</a>
+          <a href="mailto:hello@trimaxdent.al" className="block hover:opacity-80" style={{ color: AMBER }}>hello@trimaxdent.al</a>
         </div>
-        <p className="text-[10px] uppercase tracking-[0.22em] text-ivory/40">
+        <p className="text-[10px] uppercase tracking-[0.22em]" style={{ color: `${IVORY}66` }}>
           © {new Date().getFullYear()} Trimax Dent Clinic
         </p>
       </footer>
@@ -473,58 +428,71 @@ function HomePage() {
 
 function ServiceCard({
   service,
-  className = "",
-  tall = false,
-  priority = false,
+  dark = false,
+  wide = false,
 }: {
-  service: { title: string; img: string; blurb: string };
-  className?: string;
-  tall?: boolean;
-  priority?: boolean;
+  service: { title: string; blurb: string; img: string; icon: React.ComponentType<{ className?: string; strokeWidth?: number }> };
+  dark?: boolean;
+  wide?: boolean;
 }) {
+  const Icon = service.icon;
+  const bg = dark ? INK : "#ffffff";
+  const fg = dark ? IVORY : INK;
+  const sub = dark ? `${IVORY}b3` : `${INK}b3`;
   return (
     <article
-      className={`group relative flex flex-col rounded-[28px] overflow-hidden bg-white border border-[#E6DED2] shadow-sm hover:shadow-xl hover:shadow-walnut/10 transition-all duration-500 hover:-translate-y-1 ${className}`}
+      className={`group relative rounded-[2rem] lg:rounded-[3rem] p-8 lg:p-10 flex ${wide ? "flex-col md:flex-row" : "flex-col"} justify-between overflow-hidden transition-all duration-500 hover:-translate-y-1 min-h-[280px]`}
+      style={{ backgroundColor: bg, color: fg, border: dark ? "none" : `1px solid ${INK}0d` }}
     >
-      <div
-        className={`overflow-hidden ${
-          tall ? "aspect-[16/10] lg:aspect-[16/9]" : "aspect-[4/3]"
-        }`}
-      >
-        <img
-          src={service.img}
-          alt={service.title}
-          loading={priority ? "eager" : "lazy"}
-          width={1200}
-          height={900}
-          className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition duration-700"
-        />
-      </div>
-      <div className="flex-1 flex flex-col p-6 lg:p-7">
-        <h3 className="font-serif text-xl lg:text-2xl text-walnut leading-tight">
-          {service.title}
-        </h3>
-        <p className="text-sm text-walnut/65 leading-relaxed mt-2 flex-1">
+      <div className={wide ? "md:flex-1" : ""}>
+        <div
+          className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
+          style={{ backgroundColor: dark ? `${IVORY}1a` : `${AMBER}1a` }}
+        >
+          <Icon className="w-7 h-7" strokeWidth={1.6} />
+        </div>
+        <h3 className="font-display font-extrabold text-2xl lg:text-3xl mb-3 leading-tight">{service.title}</h3>
+        <p className="text-sm lg:text-base leading-relaxed max-w-xs" style={{ color: sub }}>
           {service.blurb}
         </p>
-        <div className="mt-5 flex items-center justify-between">
-          <span className="text-[10px] uppercase tracking-[0.22em] text-amber-warm font-semibold">
-            Learn more
-          </span>
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-ivory text-walnut group-hover:bg-amber-warm group-hover:text-white transition-all duration-300 group-hover:translate-x-1">
-            <ArrowUpRight className="h-4 w-4" strokeWidth={1.8} />
-          </span>
+        <div className="mt-6 inline-flex items-center gap-2 font-bold text-sm" style={{ color: AMBER }}>
+          Learn more
+          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform" strokeWidth={2} />
         </div>
       </div>
+      {wide && (
+        <div className="mt-6 md:mt-0 md:ml-8 md:w-56 rounded-2xl overflow-hidden aspect-[4/3] md:aspect-auto md:h-40 shrink-0">
+          <img src={service.img} alt={service.title} className="w-full h-full object-cover object-center" />
+        </div>
+      )}
     </article>
   );
+}
+
+function ContactRow({ icon, label, value, href }: { icon: React.ReactNode; label: string; value: string; href?: string }) {
+  const content = (
+    <div className="flex items-center gap-4">
+      <div
+        className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+        style={{ backgroundColor: `${INK}0d`, color: INK }}
+      >
+        {icon}
+      </div>
+      <div className="min-w-0">
+        <p className="text-[10px] uppercase tracking-widest font-bold" style={{ color: `${INK}66` }}>{label}</p>
+        <p className="font-bold truncate" style={{ color: INK }}>{value}</p>
+      </div>
+    </div>
+  );
+  return href ? <a href={href} className="block hover:opacity-80 transition">{content}</a> : content;
 }
 
 function FormInput(props: React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <input
       {...props}
-      className="h-14 w-full px-5 rounded-2xl bg-[#F8F4ED] border border-walnut/10 focus:border-amber-warm focus:ring-2 focus:ring-amber-warm/20 outline-none text-sm text-walnut transition"
+      className="h-14 w-full px-5 rounded-2xl outline-none text-sm transition focus:ring-2"
+      style={{ backgroundColor: "#F8F4ED", border: `1px solid ${INK}1a`, color: INK }}
     />
   );
 }
